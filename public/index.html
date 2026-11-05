@@ -1,43 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+
+    <!-- Temel SEO -->
+    <title>BayBal | Erzincan Balı, Katkısız Doğal Bal Satışı</title>
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Erzincan'da kendi arılarımızla ürettiğimiz katkısız süzme çiçek balı, karakovan ve petek bal. Pekmez, tulum peyniri ve doğal ürünler. Türkiye geneline kargo."
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta
+      name="keywords"
+      content="BayBal, Erzincan balı, Erzincan bal, bal satışı, bal satın al, doğal bal, katkısız bal, süzme çiçek balı, karakovan bal, petek bal, fenni petek, bal fiyatları, karadut pekmezi, beyaz dut pekmezi, Erzincan tulum peyniri, kuşburnu marmelatı, doğal ürünler"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="author" content="BayBal" />
+    <link rel="canonical" href="https://baybal.tr/" />
+    <link rel="alternate" hreflang="tr" href="https://baybal.tr/" />
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
+    <!-- Google Search Console doğrulaması (yalnızca "URL ön eki" yöntemini seçerseniz):
+         Search Console'un verdiği etiketi aşağıdaki satırla değiştirip yorumdan çıkarın.
+    <meta name="google-site-verification" content="BURAYA_KODUNUZ" />
     -->
-    <title>React App</title>
+
+    <!-- Bölge -->
+    <meta name="geo.region" content="TR-24" />
+    <meta name="geo.placename" content="Erzincan" />
+
+    <!-- Sosyal medya paylaşımları (WhatsApp, Facebook, Instagram, X) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:site_name" content="BayBal" />
+    <meta property="og:title" content="BayBal | Erzincan Balı, Katkısız Doğal Bal Satışı" />
+    <meta
+      property="og:description"
+      content="Erzincan'da kendi arılarımızla ürettiğimiz katkısız bal ve el yapımı doğal ürünler. WhatsApp'tan sipariş verin, Türkiye'nin her yerine kargo."
+    />
+    <meta property="og:url" content="https://baybal.tr/" />
+    <meta property="og:image" content="https://baybal.tr/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="BayBal etiketli cam kapta Erzincan petek balı" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BayBal | Erzincan Balı, Katkısız Doğal Bal Satışı" />
+    <meta name="twitter:description" content="Erzincan'da kendi arılarımızla ürettiğimiz katkısız bal ve el yapımı doğal ürünler." />
+    <meta name="twitter:image" content="https://baybal.tr/og-image.jpg" />
+
+    <!-- İkonlar ve renk -->
+    <meta name="theme-color" content="#fbf4e4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#16100a" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+
+    <!-- Yazı tipleri -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet" />
+
+    <!-- Yapılandırılmış veri: arama motorlarına markayı ve siteyi tanıtır -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://baybal.tr/#organization",
+            "name": "BayBal",
+            "alternateName": ["BayBal Erzincan Bal", "Bay Bal"],
+            "url": "https://baybal.tr/",
+            "logo": "https://baybal.tr/android-chrome-512x512.png",
+            "image": "https://baybal.tr/og-image.jpg",
+            "description": "Erzincan'da 30 yılı aşkın süredir kendi arılarıyla katkısız bal üreten aile işletmesi. Süzme çiçek balı, karakovan ve petek bal ile pekmez, tulum peyniri ve kurutulmuş meyve gibi el yapımı doğal ürünler.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Erzincan",
+              "addressRegion": "Erzincan",
+              "addressCountry": "TR"
+            },
+            "areaServed": { "@type": "Country", "name": "Türkiye" },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+90-539-424-40-50",
+              "contactType": "sales",
+              "availableLanguage": "Turkish"
+            },
+            "knowsAbout": ["Arıcılık", "Erzincan balı", "Karakovan bal", "Petek bal", "Süzme çiçek balı"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://baybal.tr/#website",
+            "name": "BayBal",
+            "alternateName": "BayBal Erzincan Balı",
+            "url": "https://baybal.tr/",
+            "inLanguage": "tr-TR",
+            "publisher": { "@id": "https://baybal.tr/#organization" }
+          }
+        ]
+      }
+    </script>
+
+    <script>
+      // Tema sayfa çizilmeden önce uygulanır, böylece açılışta renk sıçraması olmaz.
+      (function () {
+        var t;
+        try { t = localStorage.getItem('baybal-theme'); } catch (e) {}
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <h1>BayBal: Erzincan balı ve doğal ürünler</h1>
+      <p>
+        BayBal, Erzincan'da 30 yılı aşkın süredir kendi arılarıyla katkısız bal üreten bir aile işletmesidir. Süzme çiçek
+        balı, fenni petek bal ve karakovan bal ile karadut pekmezi, beyaz dut pekmezi, kuşburnu, kuşburnu marmelatı,
+        Erzincan tulum peyniri, elma kurusu, kayısı kurusu ve kabuklu ceviz satıyoruz. Ürünlerimizin hepsi %100 doğal, el
+        yapımı ve katkı maddesizdir.
+      </p>
+      <p>
+        Türkiye'nin her yerine kargo, İstanbul'un belirli bölgelerine elden teslim. Sipariş için WhatsApp:
+        <a href="https://wa.me/905394244050">+90 539 424 40 50</a>
+      </p>
+      <p>Bu siteyi tam olarak görüntülemek için JavaScript'i etkinleştirmeniz gerekiyor.</p>
+    </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

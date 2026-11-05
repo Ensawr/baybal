@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { scrollToHash, useLocation } from './router';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import WhatsAppFab from './components/WhatsAppFab';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
 
 function App() {
+  const loc = useLocation();
+  const isContact = loc.pathname.replace(/\/+$/, '') === '/iletisim';
+
+  // Sayfa değişince en üste ya da istenen bölüme git
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (!scrollToHash(loc.hash, 'auto')) window.scrollTo(0, 0);
+    }, 30);
+    return () => clearTimeout(t);
+  }, [loc.key, loc.hash]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main>{isContact ? <Contact search={loc.search} /> : <Home />}</main>
+      <Footer />
+      {!isContact && <WhatsAppFab />}
+    </>
   );
 }
 

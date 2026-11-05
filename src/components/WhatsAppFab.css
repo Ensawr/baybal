@@ -1,0 +1,72 @@
+.wa-fab {
+  position: fixed;
+  right: clamp(14px, 2.4vw, 28px);
+  bottom: clamp(14px, 2.4vw, 28px);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 60px;
+  padding: 0 22px 0 18px;
+  border-radius: 999px;
+  background: var(--wa);
+  color: var(--on-wa);
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 16px 34px -12px rgba(8, 60, 30, 0.55);
+  transform: translateY(140%) scale(0.8);
+  opacity: 0;
+  transition: transform 0.8s var(--ease-out), opacity 0.5s ease, background-color 0.3s ease;
+}
+
+.wa-fab.is-shown {
+  transform: none;
+  opacity: 1;
+}
+
+.wa-fab:hover {
+  background: var(--wa-hover);
+}
+
+.wa-fab__icon {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+
+.wa-fab__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 2px solid var(--wa);
+  animation: wa-ring 3.2s ease-out 2.6s infinite;
+  pointer-events: none;
+}
+
+@keyframes wa-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  45%,
+  100% {
+    transform: scale(1.35, 1.6);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .wa-fab {
+    width: 58px;
+    height: 58px;
+    padding: 0;
+    justify-content: center;
+  }
+  .wa-fab__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+}

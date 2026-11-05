@@ -1,0 +1,240 @@
+.story {
+  position: relative;
+  background: var(--bg-2);
+  padding: clamp(150px, 14vw, 210px) 0 clamp(80px, 10vw, 140px);
+  transition: background-color 0.5s ease;
+}
+
+.story__intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 6vw, 96px);
+  align-items: start;
+}
+
+.story__title {
+  font-size: clamp(2.5rem, 5.4vw, 4.6rem);
+  letter-spacing: -0.02em;
+  max-width: 12ch;
+}
+
+.story__body {
+  display: grid;
+  gap: 18px;
+  color: var(--ink-soft);
+  font-size: 1.12rem;
+  line-height: 1.7;
+  max-width: 54ch;
+  padding-top: 10px;
+}
+
+/* --- Kenardan akan bal --- */
+.drip {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: clamp(60px, 8vw, 110px);
+  pointer-events: none;
+}
+
+.drip svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--honey);
+  filter: drop-shadow(0 6px 10px color-mix(in srgb, var(--honey-deep) 30%, transparent));
+}
+
+.drip__drop {
+  position: absolute;
+  left: calc(934 / 1440 * 100%);
+  top: 86%;
+  width: 14px;
+  height: 18px;
+  margin-left: -7px;
+  background: var(--honey);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  animation: drop-fall 4.5s cubic-bezier(0.55, 0, 0.9, 0.4) infinite;
+}
+
+@keyframes drop-fall {
+  0%, 45% {
+    transform: translateY(0) scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(160px) scale(0.85);
+    opacity: 0;
+  }
+}
+
+/* --- Petek düzeni --- */
+.comb {
+  list-style: none;
+  margin-top: clamp(64px, 8vw, 110px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.comb__cell {
+  position: relative;
+  aspect-ratio: 100 / 88;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+/* Petek gibi kademeli dizilim */
+.comb__cell:nth-child(even) {
+  transform: translateY(50%);
+}
+
+.comb__cell.reveal--up:nth-child(even):not(.is-visible) {
+  transform: translateY(calc(50% + 36px));
+}
+
+.comb__cell .hex {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.comb__cell .hex path {
+  fill: var(--surface);
+  stroke: color-mix(in srgb, var(--honey) 60%, transparent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  transition: fill 0.5s var(--ease-out), stroke 0.5s ease;
+}
+
+.comb__cell:hover .hex path {
+  fill: var(--honey);
+}
+
+.comb__content {
+  position: relative;
+  padding: 0 16%;
+  transition: color 0.4s ease;
+}
+
+.comb__content h3 {
+  font-size: clamp(1.15rem, 1.7vw, 1.45rem);
+  margin-bottom: 8px;
+}
+
+.comb__content p {
+  font-size: 0.93rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  transition: color 0.4s ease;
+}
+
+.comb__cell:hover .comb__content,
+.comb__cell:hover .comb__content p {
+  color: var(--on-honey);
+}
+
+/* --- Süreç --- */
+.process {
+  margin-top: clamp(140px, 14vw, 200px);
+}
+
+.process__title {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  letter-spacing: -0.015em;
+}
+
+.process__steps {
+  list-style: none;
+  padding: 0;
+  margin: 40px 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+}
+
+.process__step {
+  position: relative;
+  padding: 28px 24px 0 0;
+}
+
+.process__step::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--honey);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 1.2s var(--ease-out);
+  transition-delay: calc(var(--reveal-delay, 0ms) + 200ms);
+}
+
+.process__step.is-visible::before {
+  transform: scaleX(1);
+}
+
+.process__num {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--honey);
+  color: var(--honey-deep);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+
+.process__step h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.process__step p {
+  color: var(--ink-soft);
+  max-width: 26ch;
+}
+
+@media (max-width: 960px) {
+  .story__intro {
+    grid-template-columns: 1fr;
+  }
+  .comb {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 560px;
+    padding-bottom: 40px;
+  }
+  .process__steps {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 36px;
+  }
+}
+
+@media (max-width: 520px) {
+  .comb {
+    gap: 10px;
+  }
+  .comb__content {
+    padding: 0 12%;
+  }
+  .comb__content h3 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .comb__content p {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+  .process__steps {
+    grid-template-columns: 1fr;
+  }
+}

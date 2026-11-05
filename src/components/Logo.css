@@ -1,0 +1,27 @@
+.logo {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  color: var(--ink);
+}
+
+.logo__fill,
+.logo__lines {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.logo__fill {
+  background: var(--logo-fill, var(--surface));
+  transition: background-color 0.5s ease;
+}
+
+.logo__lines {
+  background: currentColor;
+}

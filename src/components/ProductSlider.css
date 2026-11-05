@@ -1,0 +1,276 @@
+.showcase {
+  --card: clamp(230px, 28vw, 380px);
+  --gap: clamp(16px, 2.4vw, 32px);
+  position: relative;
+  background: var(--showcase-bg);
+  color: var(--showcase-ink);
+  padding: clamp(80px, 10vw, 140px) 0 clamp(72px, 9vw, 120px);
+  overflow: hidden;
+  transition: background-color 0.5s ease;
+}
+
+/* Arka planda silik petek deseni */
+.showcase::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 L56 16 V48 L28 64 L0 48 V16 Z M28 64 V97' fill='none' stroke='%23e3a23b' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 56px 97px;
+  opacity: 0.07;
+  mask-image: radial-gradient(ellipse at 50% 40%, black 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 10%, transparent 70%);
+  pointer-events: none;
+}
+
+.showcase__head {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.showcase__title {
+  font-size: clamp(2.6rem, 6vw, 5rem);
+  letter-spacing: -0.02em;
+  color: var(--showcase-ink);
+}
+
+.showcase__lead {
+  max-width: 44ch;
+  color: var(--showcase-soft);
+  font-size: 1.08rem;
+}
+
+/* --- Kaydırıcı --- */
+.slider {
+  position: relative;
+  margin-top: clamp(48px, 6vw, 80px);
+  height: calc(var(--card) * 1.25 + 20px);
+  outline: none;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.slider:focus-visible {
+  outline: 2px solid var(--honey);
+  outline-offset: -2px;
+}
+
+.slider__track {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+}
+
+.slider.is-dragging .slider__track {
+  cursor: grabbing;
+}
+
+.slide {
+  --abs: max(var(--offset), calc(var(--offset) * -1));
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: var(--card);
+  aspect-ratio: 4 / 5;
+  transform:
+    translateX(calc(-50% + var(--offset) * (var(--card) * 0.86 + var(--gap)) + var(--drag)))
+    scale(calc(1 - min(var(--abs), 1) * 0.18));
+  opacity: calc(1 - min(var(--abs), 3) * 0.28);
+  z-index: calc(10 - var(--abs));
+  transition: transform 0.9s var(--ease-out), opacity 0.7s ease, filter 0.7s ease;
+  filter: saturate(calc(1 - min(var(--abs), 1) * 0.5)) brightness(calc(1 - min(var(--abs), 1) * 0.25));
+}
+
+.slider.is-dragging .slide {
+  transition-duration: 0.12s;
+}
+
+.slide__media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 200px 200px 22px 22px;
+  overflow: hidden;
+  background: #f2ede4;
+  box-shadow: 0 40px 70px -40px rgba(0, 0, 0, 0.85);
+}
+
+.slide__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.12);
+  transition: transform 1.4s var(--ease-out);
+  pointer-events: none;
+}
+
+.slide.is-active .slide__media img {
+  transform: scale(1);
+}
+
+.slide.is-active:hover .slide__media img {
+  transform: scale(1.05);
+}
+
+.slide__placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  background: linear-gradient(160deg, #f5e3b8, #e3a23b);
+  color: #2b1c0d;
+  text-align: center;
+}
+
+.slide__placeholder svg {
+  width: 38%;
+  fill: none;
+  stroke: #2b1c0d;
+  stroke-width: 1.5;
+  opacity: 0.5;
+}
+
+.slide__placeholder span {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+}
+
+.slide__placeholder small {
+  font-size: 0.88rem;
+  opacity: 0.7;
+}
+
+/* --- Alt bilgi ve kontroller --- */
+.showcase__foot {
+  position: relative;
+  margin-top: clamp(28px, 4vw, 48px);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+}
+
+.showcase__info {
+  min-height: 200px;
+  animation: info-in 0.7s var(--ease-out);
+}
+
+.showcase__kind {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--honey) 55%, transparent);
+  color: var(--honey);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.showcase__name {
+  margin-top: 14px;
+  font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+  color: var(--showcase-ink);
+}
+
+.showcase__text {
+  margin-top: 8px;
+  max-width: 48ch;
+  color: var(--showcase-soft);
+}
+
+.showcase__cta {
+  margin-top: 22px;
+}
+
+.showcase__controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.showcase__count {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--showcase-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.showcase__count span {
+  font-size: 1rem;
+  color: var(--showcase-soft);
+}
+
+.showcase__progress {
+  width: 96px;
+  height: 2px;
+  background: color-mix(in srgb, var(--showcase-ink) 18%, transparent);
+  overflow: hidden;
+  border-radius: 2px;
+  margin-right: 6px;
+}
+
+.showcase__progress span {
+  display: block;
+  height: 100%;
+  background: var(--honey);
+  transform-origin: left;
+  animation: progress var(--dur) linear forwards;
+}
+
+.showcase__progress span.is-paused {
+  animation: none;
+  transform: scaleX(0);
+}
+
+.slider__btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid color-mix(in srgb, var(--showcase-ink) 28%, transparent);
+  background: transparent;
+  color: var(--showcase-ink);
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s var(--ease-out);
+}
+
+.slider__btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.slider__btn:hover {
+  background: var(--honey);
+  border-color: var(--honey);
+  color: #2b1c0d;
+  transform: scale(1.06);
+}
+
+@keyframes info-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@media (max-width: 720px) {
+  .showcase {
+    --card: min(66vw, 300px);
+  }
+  .showcase__foot {
+    grid-template-columns: 1fr;
+  }
+  .showcase__progress {
+    flex: 1;
+  }
+}
